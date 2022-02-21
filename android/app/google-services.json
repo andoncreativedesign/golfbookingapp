@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "87869527010",
+    "project_id": "golf-booking-app-c393e",
+    "storage_bucket": "golf-booking-app-c393e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87869527010:android:e987e99d3c537e5afd5fbb",
+        "android_client_info": {
+          "package_name": "com.example.bookingapp2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "87869527010-d4r0c8009bb9eov5thts7u7qskeebbiv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALyt5Ba7016UR59OpEJJ61i4TK6EDk__U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "87869527010-d4r0c8009bb9eov5thts7u7qskeebbiv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
