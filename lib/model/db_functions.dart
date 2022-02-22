@@ -18,15 +18,28 @@ addEvent(EventModel event) async {
   await _mainCollection
       .add(event.toJson())
       .then((value) => print("User Added"))
-      .catchError((error) => print("Failed to add user: $error"));
+      .catchError((error) => print("Failed to add event: $error"));
   //eventsList.add(event);
 }
 
-Future<List> getAllevents() async {
-  QuerySnapshot querySnapshot = await _mainCollection.get();
-  // final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
-  final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
-  //print(allData);
+updateEvent(EventModel event, id) async {
+  await _mainCollection
+      .doc(id)
+      .update(event.toJson())
+      .then((value) => print("user Updated"))
+      .catchError((error) => print("Failed to update event: $error"));
+}
 
+Future<List> getAllevents() async {
+  Map<String, dynamic> eventMap;
+  QuerySnapshot querySnapshot = await _mainCollection.get();
+  //final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
+  //print(querySnapshot.docs[0].data().runtimeType);
+  final mapped = querySnapshot.docs.map((doc) {
+    eventMap = doc.data() as Map<String, dynamic>; //{};
+    eventMap['id'] = doc.id;
+    return eventMap;
+  });
+  final allData = mapped.toList();
   return allData;
 }

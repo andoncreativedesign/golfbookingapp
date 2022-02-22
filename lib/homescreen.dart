@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     // _testRef.set("Hello");
                                     Navigator.of(context)
                                         .push(MaterialPageRoute(builder: (ctx) {
-                                      return CreateEvent();
+                                      return CreateEvent(event: {});
                                     }));
                                   },
                                   child: Text("Create Event",
@@ -142,14 +142,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                         eventsListfetched:
                                             eventsListfetched?[index],
                                         callBack: () {
-                                          Navigator.push<dynamic>(
-                                            context,
-                                            MaterialPageRoute<dynamic>(
-                                              builder: (BuildContext context) =>
-                                                  eventsListfetched?[index]
-                                                      .navigateScreen!,
-                                            ),
-                                          );
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(builder: (ctx) {
+                                            return CreateEvent(
+                                                event:
+                                                    eventsListfetched?[index]);
+                                          }));
                                         },
                                       );
                                     }),

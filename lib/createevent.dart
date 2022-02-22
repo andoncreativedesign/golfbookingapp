@@ -7,7 +7,8 @@ import 'package:bookingapp2/model/db_functions.dart';
 //mport 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class CreateEvent extends StatefulWidget {
-  const CreateEvent({Key? key}) : super(key: key);
+  const CreateEvent({Key? key, required Map this.event}) : super(key: key);
+  final Map event;
 
   @override
   _CreateEventState createState() => _CreateEventState();
@@ -21,6 +22,7 @@ class _CreateEventState extends State<CreateEvent> {
 
   final _datTextController = TextEditingController();
   final _eventNotesEC = TextEditingController();
+  String _docId = '';
   List<String>? _selectedVal;
   String dropdownValue = 'AM';
   int _inviteOthers = 1;
@@ -29,6 +31,16 @@ class _CreateEventState extends State<CreateEvent> {
   @override
   void initState() {
     super.initState();
+    if (widget.event != null) {
+      _emailEC.text = widget.event['emailId'];
+      _eventNotesEC.text = widget.event['eventNotes'];
+      _datTextController.text = widget.event['eventDate'];
+      _eventNameEC.text = widget.event['eventName'];
+      _docId = widget.event['id'];
+    }
+
+    //widget.event.inviteOthers;
+    print(widget.event);
   }
 
   @override
@@ -149,8 +161,13 @@ class _CreateEventState extends State<CreateEvent> {
                                 inviteOthers: _inviteOthers,
                                 // teeTimes: [null]);
                               );
+                              print(_docId);
+                              if (_docId == '') {
+                                addEvent(event);
+                              } else {
+                                updateEvent(event, _docId);
+                              }
 
-                              addEvent(event);
                               //print(eventsList);
                             }
                           },
